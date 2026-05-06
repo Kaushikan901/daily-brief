@@ -13,200 +13,222 @@
     --accent: #c0392b; --border: rgba(15,15,13,0.1); --border-strong: rgba(15,15,13,0.2);
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; }
-  .masthead { background: var(--ink); color: var(--paper); padding: 2rem 2rem 1.5rem; position: relative; }
+
+  /* Masthead */
+  .masthead { background: var(--ink); color: var(--paper); padding: 1.75rem 1.5rem 1.5rem; position: relative; }
   .masthead::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--accent); }
-  .masthead-inner { max-width: 900px; margin: 0 auto; }
+  .masthead-inner { max-width: 860px; margin: 0 auto; }
   .masthead-top { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap; }
-  .pub-name { font-family:'Playfair Display',serif; font-size:clamp(26px,6vw,44px); font-weight:600; letter-spacing:-0.02em; line-height:1; }
+  .pub-name { font-family:'Playfair Display',serif; font-size:clamp(24px,5vw,42px); font-weight:600; letter-spacing:-0.02em; line-height:1; }
   .pub-name span { color:var(--accent); }
-  .masthead-meta { text-align:right; }
-  .masthead-date { font-size:12px; font-weight:300; opacity:0.6; text-transform:uppercase; letter-spacing:0.08em; }
+  .masthead-right { text-align:right; }
+  .masthead-date { font-size:11px; font-weight:300; opacity:0.6; text-transform:uppercase; letter-spacing:0.08em; }
   .masthead-tagline { font-size:11px; opacity:0.4; margin-top:3px; font-style:italic; }
-  .masthead-divider { border:none; border-top:0.5px solid rgba(247,244,239,0.2); margin:1.25rem 0 0; }
-  .main { max-width:900px; margin:0 auto; padding:2rem 2rem 4rem; }
-  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:1.25rem; margin-top:2.5rem; }
-  .section-header:first-child { margin-top:0; }
-  .section-label-main { font-size:11px; text-transform:uppercase; letter-spacing:0.12em; font-weight:500; color:var(--accent); white-space:nowrap; }
+  .weather-strip { margin-top:1rem; padding-top:1rem; border-top:0.5px solid rgba(247,244,239,0.15); display:flex; align-items:center; gap:6px; }
+  .weather-text { font-size:12px; opacity:0.5; }
+  .greeting { font-size:13px; opacity:0.7; font-weight:300; }
+
+  /* Main */
+  .main { max-width: 860px; margin: 0 auto; padding: 1.75rem 1.5rem 4rem; }
+
+  /* Section */
+  .section { margin-bottom: 2rem; }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:1rem; }
+  .section-label { font-size:10px; text-transform:uppercase; letter-spacing:0.14em; font-weight:500; color:var(--accent); white-space:nowrap; }
   .section-rule { flex:1; height:0.5px; background:var(--border-strong); }
-  .section-count { font-size:11px; color:var(--ink-tertiary); white-space:nowrap; }
-  .news-grid { display:flex; flex-direction:column; }
-  .news-item { display:block; padding:1.1rem 8px; border-bottom:0.5px solid var(--border); cursor:pointer; text-decoration:none; color:inherit; border-radius:4px; margin:0 -8px; transition:background 0.15s; }
-  .news-item:hover { background:var(--paper-card); }
-  .news-item:last-child { border-bottom:none; }
-  .news-meta { display:flex; align-items:center; gap:8px; margin-bottom:5px; }
-  .news-source { font-size:10px; text-transform:uppercase; letter-spacing:0.1em; font-weight:500; color:var(--accent); }
-  .news-time { font-size:11px; color:var(--ink-tertiary); }
-  .news-dot { width:3px; height:3px; border-radius:50%; background:var(--border-strong); }
-  .news-headline { font-family:'Playfair Display',serif; font-size:16px; font-weight:400; line-height:1.4; color:var(--ink); margin-bottom:5px; }
-  .news-summary { font-size:13px; color:var(--ink-secondary); line-height:1.6; font-weight:300; }
-  .skeleton { background:linear-gradient(90deg,var(--paper-warm) 25%,var(--paper-card) 50%,var(--paper-warm) 75%); background-size:200% 100%; animation:shimmer 1.5s infinite; border-radius:4px; margin-bottom:6px; }
-  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-  .sk-src { width:60px; height:10px; }
-  .sk-h1 { width:88%; height:16px; }
-  .sk-h2 { width:65%; height:16px; }
-  .sk-s1 { width:100%; height:12px; }
-  .sk-s2 { width:72%; height:12px; }
-  .sk-block { padding:1.1rem 0; border-bottom:0.5px solid var(--border); }
-  .refresh-bar { display:flex; justify-content:space-between; align-items:center; padding:0.75rem 0; border-top:0.5px solid var(--border); margin-top:2rem; }
-  .refresh-btn { font-size:12px; background:transparent; border:0.5px solid var(--border-strong); border-radius:6px; padding:6px 14px; cursor:pointer; color:var(--ink-secondary); font-family:'DM Sans',sans-serif; transition:all 0.15s; }
-  .refresh-btn:hover { background:var(--ink); color:var(--paper); border-color:var(--ink); }
-  .last-updated { font-size:11px; color:var(--ink-tertiary); }
-  .error-note { font-size:13px; color:var(--ink-tertiary); padding:1rem 0; font-style:italic; }
-  @media(max-width:600px){ .masthead{padding:1.5rem 1rem 1rem;} .main{padding:1.5rem 1rem 3rem;} .news-headline{font-size:15px;} }
+
+  /* Cards grid */
+  .cards { display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:10px; }
+  .card {
+    display:flex; flex-direction:column; justify-content:space-between;
+    background: var(--paper-card); border:0.5px solid var(--border);
+    border-radius:12px; padding:1.1rem 1.1rem 1rem;
+    text-decoration:none; color:inherit;
+    transition: all 0.15s; cursor:pointer;
+    min-height: 100px;
+  }
+  .card:hover { border-color:var(--border-strong); background:white; transform:translateY(-1px); box-shadow:0 4px 16px rgba(0,0,0,0.06); }
+  .card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:0.6rem; }
+  .card-icon { font-size:20px; line-height:1; flex-shrink:0; }
+  .card-arrow { font-size:14px; opacity:0.3; flex-shrink:0; margin-top:2px; }
+  .card:hover .card-arrow { opacity:0.8; }
+  .card-title { font-family:'Playfair Display',serif; font-size:14px; font-weight:400; line-height:1.4; color:var(--ink); }
+  .card-sub { font-size:11px; color:var(--ink-tertiary); margin-top:4px; font-weight:300; }
+
+  /* Featured big card */
+  .cards-featured { display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px; }
+  .card-featured {
+    grid-column: span 2;
+    background: var(--ink); color: var(--paper);
+    border:none; border-radius:12px; padding:1.25rem;
+    text-decoration:none; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    transition: opacity 0.15s; cursor:pointer;
+  }
+  .card-featured:hover { opacity:0.9; }
+  .card-featured .card-title { font-size:16px; color:var(--paper); }
+  .card-featured .card-sub { color:rgba(247,244,239,0.5); }
+  .card-featured .card-arrow { color:var(--accent); opacity:1; font-size:18px; }
+
+  /* Quick reads */
+  .quick-reads { display:flex; flex-wrap:wrap; gap:8px; }
+  .quick-pill {
+    display:inline-flex; align-items:center; gap:6px;
+    background:var(--paper-card); border:0.5px solid var(--border);
+    border-radius:20px; padding:7px 14px;
+    font-size:12px; text-decoration:none; color:var(--ink-secondary);
+    transition:all 0.15s; white-space:nowrap;
+  }
+  .quick-pill:hover { background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .quick-pill-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+
+  /* Footer */
+  .footer { border-top:0.5px solid var(--border); padding-top:1rem; margin-top:0.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+  .footer-note { font-size:11px; color:var(--ink-tertiary); }
+  .footer-link { font-size:11px; color:var(--accent); text-decoration:none; }
+  .footer-link:hover { text-decoration:underline; }
+
+  @media(max-width:600px) {
+    .masthead { padding:1.25rem 1rem 1.25rem; }
+    .main { padding:1.25rem 1rem 3rem; }
+    .cards { grid-template-columns: 1fr 1fr; }
+    .cards-featured { grid-template-columns: 1fr; }
+    .card-featured { grid-column: span 1; }
+  }
+  @media(max-width:380px) {
+    .cards { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
+
 <div class="masthead">
   <div class="masthead-inner">
     <div class="masthead-top">
       <div class="pub-name">The Daily<span>.</span>Brief</div>
-      <div class="masthead-meta">
+      <div class="masthead-right">
         <div class="masthead-date" id="today-date"></div>
         <div class="masthead-tagline">curated for the senior PM</div>
       </div>
     </div>
-    <hr class="masthead-divider" />
+    <div class="weather-strip">
+      <span class="greeting" id="greeting"></span>
+    </div>
   </div>
 </div>
 
 <div class="main">
-  <div id="india-section"></div>
-  <div id="global-section"></div>
-  <div class="refresh-bar">
-    <span class="last-updated" id="last-updated"></span>
-    <button class="refresh-btn" onclick="loadAll()">↻ refresh</button>
+
+  <!-- India -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">India</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="cards-featured">
+      <a class="card-featured" href="https://news.google.com/topics/CAAqIggKIhxDQkFTRHdvSkwyMHZNR3QwTVJJQ1pXNHFBa2xVS0FBUAE?hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener">
+        <div>
+          <div class="card-title">Top Stories — India</div>
+          <div class="card-sub">Breaking news · Politics · National</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+    </div>
+    <div class="cards">
+      <a class="card" href="https://news.google.com/publications/CAAqBwgKMLm_sQswsKWxAw?hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">📊</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">Economic Times</div><div class="card-sub">Markets · Economy · Policy</div></div>
+      </a>
+      <a class="card" href="https://news.google.com/publications/CAAqBwgKMI2inQswvb2xAw?hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">🪙</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">Mint</div><div class="card-sub">Finance · Startups · Business</div></div>
+      </a>
+      <a class="card" href="https://news.google.com/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNR3QwTVJJQ1pXNHFBa2xVS0FBUAE?hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">💹</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">India Business</div><div class="card-sub">Corporate · Industry · Trade</div></div>
+      </a>
+      <a class="card" href="https://inc42.com" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">🚀</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">Inc42</div><div class="card-sub">Startups · Funding · Tech</div></div>
+      </a>
+      <a class="card" href="https://news.google.com/topics/CAAqJAgKIh5DQkFTRUFvSEwyMHZNR3QwTVJJQ1pXNHFBa2xVS0FBUAE?hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">🏦</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">India Fintech & Banking</div><div class="card-sub">RBI · Payments · UPI</div></div>
+      </a>
+    </div>
   </div>
+
+  <!-- World -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">World & Business</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="cards-featured">
+      <a class="card-featured" href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtVnVHZ0pWVXlnQVAB?hl=en&gl=US&ceid=US:en" target="_blank" rel="noopener">
+        <div>
+          <div class="card-title">Top Stories — World</div>
+          <div class="card-sub">Global news · Geopolitics · International</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </a>
+    </div>
+    <div class="cards">
+      <a class="card" href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pWVXlnQVAB?hl=en&gl=US&ceid=US:en" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">💼</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">Global Business</div><div class="card-sub">Markets · Economy · Trade</div></div>
+      </a>
+      <a class="card" href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGRqTVhZU0FtVnVHZ0pWVXlnQVAB?hl=en&gl=US&ceid=US:en" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">💻</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">Technology</div><div class="card-sub">AI · Product · Big Tech</div></div>
+      </a>
+      <a class="card" href="https://hbr.org" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">🧠</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">HBR</div><div class="card-sub">Strategy · Leadership · Management</div></div>
+      </a>
+      <a class="card" href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNREpzTlhZU0FtVnVHZ0pWVXlnQVAB?hl=en&gl=US&ceid=US:en" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">🌏</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">Asia Pacific</div><div class="card-sub">China · SE Asia · Regional</div></div>
+      </a>
+      <a class="card" href="https://www.technologyreview.com" target="_blank" rel="noopener">
+        <div class="card-top"><span class="card-icon">🔬</span><span class="card-arrow">↗</span></div>
+        <div><div class="card-title">MIT Tech Review</div><div class="card-sub">Deep tech · AI · Innovation</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Quick reads -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-label">Quick Reads</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="quick-reads">
+      <a class="quick-pill" href="https://www.deeplearning.ai/the-batch/" target="_blank" rel="noopener"><span class="quick-pill-dot" style="background:#c0392b"></span>The Batch — AI Weekly</a>
+      <a class="quick-pill" href="https://www.linkedin.com/in/emollick/" target="_blank" rel="noopener"><span class="quick-pill-dot" style="background:#0077b5"></span>Ethan Mollick — AI Insights</a>
+      <a class="quick-pill" href="https://www.lennysnewsletter.com" target="_blank" rel="noopener"><span class="quick-pill-dot" style="background:#f39c12"></span>Lenny's Newsletter — PM</a>
+      <a class="quick-pill" href="https://techcrunch.com" target="_blank" rel="noopener"><span class="quick-pill-dot" style="background:#1da462"></span>TechCrunch</a>
+      <a class="quick-pill" href="https://news.google.com/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNR3QwTVJJQ1pXNHFBa2xVU0FBUAE?hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener"><span class="quick-pill-dot" style="background:#8e44ad"></span>India Science & Tech</a>
+      <a class="quick-pill" href="https://www.themorningcontext.com" target="_blank" rel="noopener"><span class="quick-pill-dot" style="background:#2c3e50"></span>The Morning Context</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-note">Opens sources directly · No tracking · Bookmark this page</span>
+    <a class="footer-link" href="https://news.google.com" target="_blank" rel="noopener">Google News →</a>
+  </div>
+
 </div>
 
 <script>
-const INDIA_FEEDS = [
-  { name:'Economic Times', url:'https://economictimes.indiatimes.com/rssfeedstopstories.cms' },
-  { name:'Mint', url:'https://www.livemint.com/rss/news' },
-  { name:'The Hindu', url:'https://www.thehindu.com/news/national/feeder/default.rss' },
-  { name:'Inc42', url:'https://inc42.com/feed/' },
-  { name:'Business Standard', url:'https://www.business-standard.com/rss/home_page_top_stories.rss' },
-];
-const GLOBAL_FEEDS = [
-  { name:'BBC News', url:'https://feeds.bbci.co.uk/news/rss.xml' },
-  { name:'Reuters', url:'https://feeds.reuters.com/reuters/topNews' },
-  { name:'TechCrunch', url:'https://techcrunch.com/feed/' },
-  { name:'HBR', url:'https://hbr.org/resources/rss/editorial-feed' },
-  { name:'MIT Tech Review', url:'https://www.technologyreview.com/feed/' },
-];
-
-function setDate() {
-  document.getElementById('today-date').textContent = new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+function setGreeting() {
+  const h = new Date().getHours();
+  const greet = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+  document.getElementById('greeting').textContent = greet + ', Kaushikan.';
+  document.getElementById('today-date').textContent = new Date().toLocaleDateString('en-IN', {
+    weekday:'long', day:'numeric', month:'long', year:'numeric'
+  });
 }
-
-function timeSince(dateStr) {
-  if (!dateStr) return '';
-  const diff = Math.floor((Date.now() - new Date(dateStr)) / 60000);
-  if (diff < 60) return diff + 'm ago';
-  if (diff < 1440) return Math.floor(diff/60) + 'h ago';
-  return Math.floor(diff/1440) + 'd ago';
-}
-
-function stripHtml(html) {
-  if (!html) return '';
-  return html.replace(/<[^>]*>/g,'').replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").trim();
-}
-
-function truncate(str, n) {
-  str = stripHtml(str || '');
-  return str.length > n ? str.slice(0,n).replace(/\s\S*$/,'') + '…' : str;
-}
-
-function skeleton() {
-  return Array(5).fill(0).map(()=>`
-    <div class="sk-block">
-      <div class="skeleton sk-src" style="margin-bottom:8px"></div>
-      <div class="skeleton sk-h1" style="margin-bottom:5px"></div>
-      <div class="skeleton sk-h2" style="margin-bottom:8px"></div>
-      <div class="skeleton sk-s1" style="margin-bottom:4px"></div>
-      <div class="skeleton sk-s2"></div>
-    </div>`).join('');
-}
-
-async function fetchFeed(feed) {
-  // allorigins.win proxies any URL, bypassing CORS
-  const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(feed.url)}`;
-  try {
-    const res = await fetch(proxy, { signal: AbortSignal.timeout(8000) });
-    const data = await res.json();
-    if (!data.contents) return [];
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(data.contents, 'text/xml');
-    const items = Array.from(xml.querySelectorAll('item')).slice(0, 3);
-    return items.map(item => ({
-      source: feed.name,
-      title: stripHtml(item.querySelector('title')?.textContent || ''),
-      summary: truncate(
-        item.querySelector('description')?.textContent ||
-        item.querySelector('content\\:encoded')?.textContent || '', 160),
-      link: item.querySelector('link')?.textContent?.trim() || '#',
-      pubDate: item.querySelector('pubDate')?.textContent || ''
-    })).filter(i => i.title);
-  } catch(e) { return []; }
-}
-
-async function fetchSection(feeds, count) {
-  const results = await Promise.allSettled(feeds.map(f => fetchFeed(f)));
-  const all = results.flatMap(r => r.status === 'fulfilled' ? r.value : []);
-  return all.slice(0, count);
-}
-
-function renderItems(items) {
-  if (!items.length) return `<div class="error-note">Couldn't load stories right now — try refreshing in a moment.</div>`;
-  return items.map(item => `
-    <a class="news-item" href="${item.link}" target="_blank" rel="noopener">
-      <div class="news-meta">
-        <span class="news-source">${item.source}</span>
-        ${item.pubDate ? `<span class="news-dot"></span><span class="news-time">${timeSince(item.pubDate)}</span>` : ''}
-      </div>
-      <div class="news-headline">${item.title}</div>
-      ${item.summary ? `<div class="news-summary">${item.summary}</div>` : ''}
-    </a>`).join('');
-}
-
-async function loadAll() {
-  document.getElementById('india-section').innerHTML = `
-    <div class="section-header">
-      <span class="section-label-main">India</span>
-      <div class="section-rule"></div>
-      <span class="section-count">loading…</span>
-    </div><div class="news-grid">${skeleton()}</div>`;
-
-  document.getElementById('global-section').innerHTML = `
-    <div class="section-header" style="margin-top:2.5rem">
-      <span class="section-label-main">World & Business</span>
-      <div class="section-rule"></div>
-      <span class="section-count">loading…</span>
-    </div><div class="news-grid">${skeleton()}</div>`;
-
-  const [india, global] = await Promise.all([
-    fetchSection(INDIA_FEEDS, 5),
-    fetchSection(GLOBAL_FEEDS, 5)
-  ]);
-
-  document.getElementById('india-section').innerHTML = `
-    <div class="section-header">
-      <span class="section-label-main">India</span>
-      <div class="section-rule"></div>
-      <span class="section-count">${india.length} stories</span>
-    </div><div class="news-grid">${renderItems(india)}</div>`;
-
-  document.getElementById('global-section').innerHTML = `
-    <div class="section-header" style="margin-top:2.5rem">
-      <span class="section-label-main">World & Business</span>
-      <div class="section-rule"></div>
-      <span class="section-count">${global.length} stories</span>
-    </div><div class="news-grid">${renderItems(global)}</div>`;
-
-  document.getElementById('last-updated').textContent = 'Updated ' + new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
-}
-
-setDate();
-loadAll();
+setGreeting();
 </script>
 </body>
 </html>
